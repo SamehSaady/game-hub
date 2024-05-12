@@ -4,6 +4,11 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 
 function App() {
+  // For [base] [templateAreas]:
+  // First Row has one Column: [nav].
+  // Second Row has one Column: [main].
+
+  // For [lg] [templateAreas]:
   // First Row has two Columns: [nav] and [nav].
   // Second Row has two Columns: [aside] and [main].
   return (
@@ -12,13 +17,17 @@ function App() {
         base: '"nav" "main"', // Mobile layout
         lg: '"nav nav" "aside main"', // Desktop layout (>= 992px)
       }}
+      templateColumns={{
+        base: "1fr", // [1 fraction]: The column stetches and takes all the available space.
+        lg: "200px 1fr", // The first column will be [200px] and the second one will stetche and take all the available space.
+      }}
     >
       <GridItem area="nav">
         <NavBar />
       </GridItem>
 
       <Show above="lg">
-        <GridItem area="aside">
+        <GridItem area="aside" paddingX={5}>
           <GenreList />
         </GridItem>
       </Show>
