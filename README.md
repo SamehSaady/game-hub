@@ -16,3 +16,4 @@ This is a project for practicing Front-End development using React and RAWG API.
 - Vite
 - Chakra UI
 - Axios
+- React Icons
