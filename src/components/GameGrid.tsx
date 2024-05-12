@@ -6,7 +6,8 @@ import GameCardContainer from "./GameCardContainer";
 
 const GameGrid = () => {
   const { games, error, isLoading } = useGames();
-  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  const skeletons = [...Array(8).keys()];
 
   return (
     <>

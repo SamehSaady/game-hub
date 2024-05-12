@@ -1,4 +1,4 @@
-import create, { FetchResponse } from "./http-service";
+import create from "./http-service";
 
 export interface Genre {
   id: number;
