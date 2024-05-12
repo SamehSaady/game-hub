@@ -20,4 +20,4 @@ export interface FetchGamesResponse {
   results: Game[];
 }
 
-export default create("/games");
+export default create<FetchGamesResponse>("/games");

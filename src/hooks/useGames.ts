@@ -11,7 +11,7 @@ const useGames = () => {
   useEffect(() => {
     setLoading(true);
 
-    const { request, cancel } = gameService.getAll<FetchGamesResponse>();
+    const { request, cancel } = gameService.getAll();
 
     request
       .then((res) => {
