@@ -9,6 +9,7 @@ import {
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import arrUtils from "../utils/arrUtils";
+import GenreItem from "./GenreItem";
 
 const GenreList = () => {
   const { genres, error, isLoading } = useGenres();
@@ -25,16 +26,10 @@ const GenreList = () => {
             <SkeletonText noOfLines={2} />
           </ListItem>
         ))}
+
       {genres.map((genre) => (
         <ListItem key={genre.id} paddingY="5px">
-          <HStack>
-            <Image
-              boxSize="32px"
-              borderRadius={8}
-              src={getCroppedImageUrl(genre.image_background)}
-            />
-            <Text fontSize="lg">{genre.name}</Text>
-          </HStack>
+          <GenreItem genre={genre} />
         </ListItem>
       ))}
     </List>
