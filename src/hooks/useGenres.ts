@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import { CanceledError } from "../services/api-client";
-import { Game } from "../services/game-service";
-import gameService from "../services/game-service";
+import genreService, { Genre } from "../services/genre-service";
 
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
+const useGenres = () => {
+  const [genres, setGenres] = useState<Genre[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
 
-    const { request, cancel } = gameService.getAll();
+    const { request, cancel } = genreService.getAll();
 
     request
       .then((res) => {
-        setGames(res.data.results);
+        setGenres(res.data.results);
         setLoading(false);
       })
       .catch((err) => {
@@ -27,7 +26,7 @@ const useGames = () => {
     return cancel;
   }, []);
 
-  return { games, error, isLoading };
+  return { genres, error, isLoading };
 };
 
-export default useGames;
+export default useGenres;
