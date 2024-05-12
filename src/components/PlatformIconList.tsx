@@ -30,10 +30,10 @@ const PlatformIconList = ({ platforms }: Props) => {
     web: BsGlobe,
   };
 
-  // HStack: marginY = {1} means {1 * theme.space}
-  // where the default value for [theme.space] is 4 px.
+  // HStack: marginY = {2} means {2 * theme.space}
+  // where the default value for [theme.space] is 4px.
   return (
-    <HStack marginY={1}>
+    <HStack marginY={2}>
       {platforms.map((platform) => (
         <Icon as={iconMap[platform.slug]} color="gray.500" />
       ))}
