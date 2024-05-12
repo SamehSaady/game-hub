@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
-import apiClient, { CanceledError } from "../services/api-client";
-
-interface Game {
-  id: number;
-  name: string;
-}
-
-interface FetchGamesResponse {
-  count: number;
-  results: Game[];
-}
+import { CanceledError } from "../services/api-client";
+import { FetchGamesResponse, Game } from "../services/game-service";
+import gameService from "../services/game-service";
 
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
@@ -18,10 +10,10 @@ const useGames = () => {
 
   useEffect(() => {
     setLoading(true);
-    const controller = new AbortController();
 
-    apiClient
-      .get<FetchGamesResponse>("/games", { signal: controller.signal })
+    const { request, cancel } = gameService.getAll<FetchGamesResponse>();
+
+    request
       .then((res) => {
         setGames(res.data.results);
         setLoading(false);
@@ -32,7 +24,7 @@ const useGames = () => {
         setLoading(false);
       });
 
-    return () => controller.abort();
+    return cancel;
   }, []);
 
   return { games, setGames, error, setError, isLoading };

@@ -1,12 +1,11 @@
-// In this file, we are creating a new access client with custom configuration.
-import axios, {CanceledError} from "axios"
+import axios, { CanceledError } from "axios";
 
-export default axios.create ({
-    baseURL: "https://api.rawg.io/api",
-    
-    params: {
-        key: "2e9c955572734b2c8dd874d1ad285f61"
-    }
-})
+export default axios.create({
+  baseURL: "https://api.rawg.io/api",
 
-export {CanceledError};
+  params: {
+    key: "2e9c955572734b2c8dd874d1ad285f61",
+  },
+});
+
+export { CanceledError };
