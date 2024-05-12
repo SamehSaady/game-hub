@@ -1,6 +1,13 @@
+// A generic HTTP Service.
 import apiClient from "./api-client";
 
-class HttpService<T> {
+export interface FetchResponse<T> {
+  count: number;
+  results: T[];
+}
+
+// <T> is the Entity to fetch its objects.
+export class HttpService<T> {
   endPoint: string;
 
   constructor(endPoint: string) {
@@ -9,7 +16,7 @@ class HttpService<T> {
 
   getAll() {
     const controller = new AbortController();
-    const request = apiClient.get<T>(this.endPoint, {
+    const request = apiClient.get<FetchResponse<T>>(this.endPoint, {
       signal: controller.signal,
     });
 

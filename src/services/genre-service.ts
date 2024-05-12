@@ -1,13 +1,8 @@
-import create from "./http-service";
+import create, { FetchResponse } from "./http-service";
 
 export interface Genre {
   id: number;
   name: string;
 }
 
-export interface FetchGenresResponse {
-  count: number;
-  results: Genre[];
-}
-
-export default create<FetchGenresResponse>("/genres");
+export default create<Genre>("/genres");
