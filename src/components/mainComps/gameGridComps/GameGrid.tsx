@@ -4,9 +4,7 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import arrUtils from "../../../utils/arrUtils";
-import { Genre } from "../../../services/genre-service";
-import { Platform } from "../../../services/platform-service";
-import { GameQuery } from "../../../App";
+import { GameQuery, globalPadding } from "../../../App";
 
 interface Props {
   gameQuery: GameQuery;
@@ -21,8 +19,8 @@ const GameGrid = ({ gameQuery }: Props) => {
       {error && <Text>{error}</Text>}
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        spacing={5}
-        padding={5}
+        spacing={globalPadding}
+        padding={globalPadding}
       >
         {isLoading &&
           skeletons.map((skeleton) => (

@@ -18,6 +18,8 @@ export interface GameQuery {
   searchText: string;
 }
 
+export const globalPadding = 6;
+
 function App() {
   // For [base] [templateAreas]:
   // First Row has one Column: [nav].
@@ -42,7 +44,7 @@ function App() {
       }}
       templateColumns={{
         base: "1fr", // [1 fraction]: The column stetches and takes all the available space.
-        lg: "260px 1fr", // The first column will be [260px] and the second one will stetche and take all the available space.
+        lg: "250px 1fr", // The first column will be [250px] and the second one will stetche and take all the available space.
       }}
     >
       <GridItem area="nav">
@@ -54,7 +56,7 @@ function App() {
       </GridItem>
 
       <Show above="lg">
-        <GridItem area="aside" paddingX={5}>
+        <GridItem area="aside" paddingLeft={globalPadding}>
           <GenreList
             selectedGenre={gameQuery.genre}
             onSelectGenre={(genre: Genre) =>
@@ -65,9 +67,9 @@ function App() {
       </Show>
 
       <GridItem area="main">
-        <Box paddingLeft={5}>
+        <Box paddingLeft={globalPadding}>
           <GameHeading gameQuery={gameQuery} />
-          <HStack spacing={5} paddingBottom={2}>
+          <HStack spacing={globalPadding} paddingBottom={2}>
             <PlatformSelector
               selectedPlatform={gameQuery.platform}
               onSelectedPlatform={(selectedPlatform: Platform) =>
