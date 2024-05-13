@@ -1,4 +1,5 @@
 import create from "./http-service";
+import { Platform } from "./platform-service";
 
 export interface Game {
   id: number;
@@ -8,12 +9,6 @@ export interface Game {
     platform: Platform;
   }[];
   metacritic: number;
-}
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
 }
 
 export default create<Game>("/games");
