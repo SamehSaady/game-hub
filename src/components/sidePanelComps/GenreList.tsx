@@ -1,4 +1,4 @@
-import { List, ListItem, SkeletonText } from "@chakra-ui/react";
+import { Heading, List, ListItem, SkeletonText } from "@chakra-ui/react";
 import useGenres from "../../hooks/useGenres";
 import arrUtils from "../../utils/arrUtils";
 import GenreItem from "./GenreItem";
@@ -16,24 +16,29 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   if (error) return null;
 
   return (
-    <List>
-      {isLoading &&
-        skeletons.map((skeleton) => (
-          <ListItem key={skeleton} paddingY="8px">
-            <SkeletonText noOfLines={2} />
+    <>
+      <Heading fontSize="2xl" paddingBottom={3}>
+        Genres
+      </Heading>
+      <List>
+        {isLoading &&
+          skeletons.map((skeleton) => (
+            <ListItem key={skeleton} paddingY="8px">
+              <SkeletonText noOfLines={2} />
+            </ListItem>
+          ))}
+
+        {genres.map((genre) => (
+          <ListItem key={genre.id} paddingY="5px">
+            <GenreItem
+              genre={genre}
+              onSelectGenre={() => onSelectGenre(genre)}
+              highlight={genre.id === selectedGenre?.id}
+            />
           </ListItem>
         ))}
-
-      {genres.map((genre) => (
-        <ListItem key={genre.id} paddingY="5px">
-          <GenreItem
-            genre={genre}
-            onSelectGenre={() => onSelectGenre(genre)}
-            highlight={genre.id === selectedGenre?.id}
-          />
-        </ListItem>
-      ))}
-    </List>
+      </List>
+    </>
   );
 };
 
