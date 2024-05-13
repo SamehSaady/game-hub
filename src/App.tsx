@@ -2,6 +2,8 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/navBarComps/NavBar";
 import GameGrid from "./components/gameGridComps/GameGrid";
 import GenreList from "./components/genreListComps/GenreList";
+import { useState } from "react";
+import { Genre } from "./services/genre-service";
 
 function App() {
   // For [base] [templateAreas]:
@@ -11,6 +13,10 @@ function App() {
   // For [lg] [templateAreas]:
   // First Row has two Columns: [nav] and [nav].
   // Second Row has two Columns: [aside] and [main].
+
+  // [null] shall retrieve all games (no specific genre).
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
   return (
     <Grid
       templateAreas={{
@@ -19,7 +25,7 @@ function App() {
       }}
       templateColumns={{
         base: "1fr", // [1 fraction]: The column stetches and takes all the available space.
-        lg: "200px 1fr", // The first column will be [200px] and the second one will stetche and take all the available space.
+        lg: "250px 1fr", // The first column will be [250px] and the second one will stetche and take all the available space.
       }}
     >
       <GridItem area="nav">
@@ -28,12 +34,14 @@ function App() {
 
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <GenreList />
+          <GenreList
+            onSelectGenre={(genre: Genre) => setSelectedGenre(genre)}
+          />
         </GridItem>
       </Show>
 
       <GridItem area="main">
-        <GameGrid />
+        <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
   );

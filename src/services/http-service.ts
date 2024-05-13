@@ -1,4 +1,5 @@
 // A generic HTTP Service.
+import { AxiosRequestConfig } from "axios";
 import apiClient from "./api-client";
 
 export interface FetchResponse<T> {
@@ -14,9 +15,10 @@ export class HttpService<T> {
     this.endPoint = endPoint;
   }
 
-  getAll() {
+  getAll(requestConfig?: AxiosRequestConfig) {
     const controller = new AbortController();
     const request = apiClient.get<FetchResponse<T>>(this.endPoint, {
+      ...requestConfig,
       signal: controller.signal,
     });
 

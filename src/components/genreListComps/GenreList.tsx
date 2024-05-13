@@ -1,17 +1,14 @@
-import {
-  HStack,
-  Image,
-  List,
-  ListItem,
-  SkeletonText,
-  Text,
-} from "@chakra-ui/react";
+import { List, ListItem, SkeletonText } from "@chakra-ui/react";
 import useGenres from "../../hooks/useGenres";
-import getCroppedImageUrl from "../../services/image-url";
 import arrUtils from "../../utils/arrUtils";
 import GenreItem from "./GenreItem";
+import { Genre } from "../../services/genre-service";
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { genres, error, isLoading } = useGenres();
   const skeletons = arrUtils.getRangeFromZero(15);
 
@@ -29,7 +26,7 @@ const GenreList = () => {
 
       {genres.map((genre) => (
         <ListItem key={genre.id} paddingY="5px">
-          <GenreItem genre={genre} />
+          <GenreItem genre={genre} onSelectGenre={onSelectGenre} />
         </ListItem>
       ))}
     </List>
