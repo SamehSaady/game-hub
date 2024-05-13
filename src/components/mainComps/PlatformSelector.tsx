@@ -23,37 +23,32 @@ const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
 
   if (error) return;
 
-  // The first two divs inside HStack are created to align the Menu with the Game Grid.
   return (
-    <HStack>
-      <div></div>
-      <div></div>
-      <Menu>
-        <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-          {isLoading ? (
-            <Spinner />
-          ) : selectedPlatform === null ? (
-            "Platform"
-          ) : (
-            <HStack>
-              <PlatformIcon platform={selectedPlatform} />
-              <Text>{selectedPlatform.name}</Text>
-            </HStack>
-          )}
-        </MenuButton>
-        <MenuList>
-          {platforms.map((platform) => (
-            <MenuItem
-              key={platform.id}
-              icon={<PlatformIcon platform={platform} />}
-              onClick={() => onSelectedPlatform(platform)}
-            >
-              {platform.name}
-            </MenuItem>
-          ))}
-        </MenuList>
-      </Menu>
-    </HStack>
+    <Menu>
+      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+        {isLoading ? (
+          <Spinner />
+        ) : selectedPlatform === null ? (
+          "Platform"
+        ) : (
+          <HStack>
+            <PlatformIcon platform={selectedPlatform} />
+            <Text>{selectedPlatform.name}</Text>
+          </HStack>
+        )}
+      </MenuButton>
+      <MenuList>
+        {platforms.map((platform) => (
+          <MenuItem
+            key={platform.id}
+            icon={<PlatformIcon platform={platform} />}
+            onClick={() => onSelectedPlatform(platform)}
+          >
+            {platform.name}
+          </MenuItem>
+        ))}
+      </MenuList>
+    </Menu>
   );
 };
 
