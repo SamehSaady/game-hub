@@ -6,12 +6,14 @@ import { useState } from "react";
 import { Genre } from "./services/genre-service";
 import PlatformSelector from "./components/mainComps/PlatformSelector";
 import { Platform } from "./services/platform-service";
-import SortSelector from "./components/mainComps/SortSelector";
+import SortSelector, { sortOrders } from "./components/mainComps/SortSelector";
+import { SortOrder } from "./components/mainComps/SortSelector";
 
 // [null] for [genre] or [platform] shall retrieve all games (no specific genre or platform).
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder: SortOrder;
 }
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
     genre: null,
     platform: null,
+    sortOrder: sortOrders[0],
   });
 
   return (
@@ -58,11 +61,16 @@ function App() {
         <HStack spacing={5} paddingLeft={5} paddingBottom={2}>
           <PlatformSelector
             selectedPlatform={gameQuery.platform}
-            onSelectedPlatform={(platform: Platform) =>
-              setGameQuery({ ...gameQuery, platform: platform })
+            onSelectedPlatform={(selectedPlatform: Platform) =>
+              setGameQuery({ ...gameQuery, platform: selectedPlatform })
             }
           />
-          <SortSelector />
+          <SortSelector
+            selectedSortOrder={gameQuery.sortOrder}
+            onSelectedSortOrder={(selectedSortOrder: SortOrder) =>
+              setGameQuery({ ...gameQuery, sortOrder: selectedSortOrder })
+            }
+          />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
