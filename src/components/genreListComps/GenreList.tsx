@@ -5,10 +5,11 @@ import GenreItem from "./GenreItem";
 import { Genre } from "../../services/genre-service";
 
 interface Props {
+  selectedGenre: Genre | null;
   onSelectGenre: (genre: Genre) => void;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { genres, error, isLoading } = useGenres();
   const skeletons = arrUtils.getRangeFromZero(15);
 
@@ -26,7 +27,11 @@ const GenreList = ({ onSelectGenre }: Props) => {
 
       {genres.map((genre) => (
         <ListItem key={genre.id} paddingY="5px">
-          <GenreItem genre={genre} onSelectGenre={onSelectGenre} />
+          <GenreItem
+            genre={genre}
+            onSelectGenre={() => onSelectGenre(genre)}
+            highlight={genre.id === selectedGenre?.id}
+          />
         </ListItem>
       ))}
     </List>
