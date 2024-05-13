@@ -5,13 +5,15 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import arrUtils from "../../../utils/arrUtils";
 import { Genre } from "../../../services/genre-service";
+import { Platform } from "../../../services/platform-service";
 
 interface Props {
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 
-const GameGrid = ({ selectedGenre }: Props) => {
-  const { games, error, isLoading } = useGames(selectedGenre);
+const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
+  const { games, error, isLoading } = useGames(selectedGenre, selectedPlatform);
 
   const skeletons = arrUtils.getRangeFromZero(8);
 

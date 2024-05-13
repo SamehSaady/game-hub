@@ -17,7 +17,6 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
   return (
     <List>
-      {/* {isLoading && <Spinner />} */}
       {isLoading &&
         skeletons.map((skeleton) => (
           <ListItem key={skeleton} paddingY="8px">

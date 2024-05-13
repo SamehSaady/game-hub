@@ -5,6 +5,7 @@ import GenreList from "./components/sidePanelComps/GenreList";
 import { useState } from "react";
 import { Genre } from "./services/genre-service";
 import PlatformSelector from "./components/mainComps/PlatformSelector";
+import { Platform } from "./services/platform-service";
 
 function App() {
   // For [base] [templateAreas]:
@@ -15,8 +16,11 @@ function App() {
   // First Row has two Columns: [nav] and [nav].
   // Second Row has two Columns: [aside] and [main].
 
-  // [null] shall retrieve all games (no specific genre).
+  // [null] shall retrieve all games (no specific genre or platform).
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
 
   return (
     <Grid
@@ -43,8 +47,16 @@ function App() {
       </Show>
 
       <GridItem area="main">
-        <PlatformSelector />
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector
+          selectedPlatform={selectedPlatform}
+          onSelectedPlatform={(platform: Platform) =>
+            setSelectedPlatform(platform)
+          }
+        />
+        <GameGrid
+          selectedGenre={selectedGenre}
+          selectedPlatform={selectedPlatform}
+        />
       </GridItem>
     </Grid>
   );
