@@ -6,15 +6,14 @@ import GameCardContainer from "./GameCardContainer";
 import arrUtils from "../../../utils/arrUtils";
 import { Genre } from "../../../services/genre-service";
 import { Platform } from "../../../services/platform-service";
+import { GameQuery } from "../../../App";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
 }
 
-const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
-  const { games, error, isLoading } = useGames(selectedGenre, selectedPlatform);
-
+const GameGrid = ({ gameQuery }: Props) => {
+  const { games, error, isLoading } = useGames(gameQuery);
   const skeletons = arrUtils.getRangeFromZero(8);
 
   return (
