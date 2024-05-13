@@ -1,6 +1,7 @@
 import { Genre } from "../../services/genre-service";
 import { Button, HStack, Image } from "@chakra-ui/react";
 import getCroppedImageUrl from "../../services/image-url";
+import { wrap } from "framer-motion";
 
 interface Props {
   genre: Genre;
@@ -19,6 +20,8 @@ const GenreItem = ({ genre, onSelectGenre, highlight }: Props) => {
       <Button
         fontWeight={highlight ? "bold" : "normal"}
         fontSize="lg"
+        whiteSpace="wrap"
+        textAlign="left"
         variant="link"
         onClick={onSelectGenre}
       >

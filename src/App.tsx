@@ -14,6 +14,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: SortOrder;
+  searchText: string;
 }
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
     genre: null,
     platform: null,
     sortOrder: sortOrders[0],
+    searchText: "",
   });
 
   return (
@@ -39,11 +41,15 @@ function App() {
       }}
       templateColumns={{
         base: "1fr", // [1 fraction]: The column stetches and takes all the available space.
-        lg: "250px 1fr", // The first column will be [250px] and the second one will stetche and take all the available space.
+        lg: "260px 1fr", // The first column will be [260px] and the second one will stetche and take all the available space.
       }}
     >
       <GridItem area="nav">
-        <NavBar />
+        <NavBar
+          onSearch={(searchText: string) =>
+            setGameQuery({ ...gameQuery, searchText: searchText })
+          }
+        />
       </GridItem>
 
       <Show above="lg">
