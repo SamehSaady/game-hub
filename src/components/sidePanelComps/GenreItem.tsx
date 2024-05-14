@@ -21,22 +21,10 @@ const GenreItem = ({ genre, onSelectGenre, highlight }: Props) => {
       alignItems="center" // Align children vertically to center.
       onClick={onSelectGenre}
     >
-    <Button
-      width="100%"
-      fontWeight={highlight ? "bold" : "normal"}
-      fontSize="lg"
-      whiteSpace="wrap"
-      textAlign="left"
-      variant="ghost"
-      display="flex" // To make children align horizontally.
-      alignItems="center" // Align children vertically to center.
-      onClick={onSelectGenre}
-    >
       <Image
         boxSize="32px"
         borderRadius={8}
         objectFit="cover"
-        marginRight={3}
         marginRight={3}
         src={getCroppedImageUrl(genre.image_background)}
       />
