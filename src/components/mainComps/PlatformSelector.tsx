@@ -14,11 +14,12 @@ import PlatformIcon from "./gameGridComps/PlatformIcon";
 
 interface Props {
   selectedPlatform: Platform | null;
-  onSelectedPlatform: (platform: Platform) => void;
+  onSelectedPlatform: (platform: Platform | null) => void;
 }
 
 const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
   const { platforms, error } = usePlatforms();
+  const allPlatforms = "All Platforms";
 
   if (error) return;
 
@@ -26,27 +27,20 @@ const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
         {
-          // isLoading ? (
-          //   <Spinner />
-          // ) :
-          selectedPlatform === null ? (
-            "Platform"
-          ) : (
-            <HStack>
-              <PlatformIcon platform={selectedPlatform} />
-              <Text>{selectedPlatform.name}</Text>
-            </HStack>
-          )
+          <HStack>
+            <PlatformIcon platform={selectedPlatform} />
+            <Text>{selectedPlatform?.name || allPlatforms}</Text>
+          </HStack>
         }
       </MenuButton>
       <MenuList>
-        {platforms.map((platform) => (
+        {[null, ...platforms].map((platform) => (
           <MenuItem
-            key={platform.id}
+            key={platform?.id}
             icon={<PlatformIcon platform={platform} />}
             onClick={() => onSelectedPlatform(platform)}
           >
-            {platform.name}
+            {platform?.name || allPlatforms}
           </MenuItem>
         ))}
       </MenuList>
