@@ -1,8 +1,11 @@
-import { HStack, Switch, Text, useColorMode } from "@chakra-ui/react";
+import { HStack, Switch, Text } from "@chakra-ui/react";
 
-const ColorModeSwitch = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+interface Props {
+  colorMode: string;
+  toggleColorMode: () => void;
+}
 
+const ColorModeSwitch = ({ colorMode, toggleColorMode }: Props) => {
   return (
     <HStack paddingRight={3}>
       <Switch

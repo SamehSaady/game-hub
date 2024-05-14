@@ -1,4 +1,11 @@
-import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  HStack,
+  Show,
+  useColorMode,
+} from "@chakra-ui/react";
 import NavBar from "./components/navBarComps/NavBar";
 import GameGrid from "./components/mainComps/gameGridComps/GameGrid";
 import GenreList from "./components/sidePanelComps/GenreList";
@@ -29,6 +36,8 @@ function App() {
   // First Row has two Columns: [nav] and [nav].
   // Second Row has two Columns: [aside] and [main].
 
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const [gameQuery, setGameQuery] = useState<GameQuery>({
     genre: null,
     platform: null,
@@ -49,6 +58,8 @@ function App() {
     >
       <GridItem area="nav">
         <NavBar
+          colorMode={colorMode}
+          toggleColorMode={toggleColorMode}
           onSearch={(searchText: string) =>
             setGameQuery({ ...gameQuery, searchText: searchText })
           }
@@ -62,6 +73,7 @@ function App() {
             onSelectGenre={(genre: Genre | null) =>
               setGameQuery({ ...gameQuery, genre: genre })
             }
+            colorMode={colorMode}
           />
         </GridItem>
       </Show>

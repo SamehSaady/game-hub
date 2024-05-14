@@ -6,14 +6,16 @@ interface Props {
   genre: Genre | null;
   onSelectGenre: () => void;
   highlight: boolean;
+  colorMode: string;
 }
 
-const GenreItem = ({ genre, onSelectGenre, highlight }: Props) => {
+const GenreItem = ({ genre, onSelectGenre, highlight, colorMode }: Props) => {
   return (
     <Button
       width="100%"
+      height="50px"
       fontWeight={highlight ? "bold" : "normal"}
-      bgColor={highlight ? "#252525" : ""}
+      bgColor={highlight ? (colorMode === "dark" ? "#252525" : "#ededed") : ""}
       fontSize="lg"
       whiteSpace="wrap"
       textAlign="left"
@@ -24,7 +26,7 @@ const GenreItem = ({ genre, onSelectGenre, highlight }: Props) => {
     >
       {genre && (
         <Image
-          boxSize="32px"
+          boxSize="40px"
           borderRadius={8}
           objectFit="cover"
           marginRight={3}

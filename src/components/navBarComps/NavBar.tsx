@@ -4,10 +4,12 @@ import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 
 interface Props {
+  colorMode: string;
+  toggleColorMode: () => void;
   onSearch: (searchText: string) => void;
 }
 
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = ({ colorMode, toggleColorMode, onSearch }: Props) => {
   return (
     <HStack padding="10px" spacing="20px">
       <Image src={logo} alt="Game Hub" boxSize="60px" />
@@ -15,7 +17,10 @@ const NavBar = ({ onSearch }: Props) => {
         GameHub
       </Heading>
       <SearchInput onSearch={onSearch} />
-      <ColorModeSwitch />
+      <ColorModeSwitch
+        colorMode={colorMode}
+        toggleColorMode={toggleColorMode}
+      />
     </HStack>
   );
 };
