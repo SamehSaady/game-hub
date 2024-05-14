@@ -3,6 +3,7 @@ import useGenres from "../../hooks/useGenres";
 import arrUtils from "../../utils/arrUtils";
 import GenreItem from "./GenreItem";
 import { Genre } from "../../services/genre-service";
+import { globalPadding } from "../../App";
 
 interface Props {
   selectedGenre: Genre | null;
@@ -17,10 +18,10 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
   return (
     <>
-      <Heading fontSize="2xl" paddingBottom={3}>
+      <Heading fontSize="2xl" paddingLeft={globalPadding} paddingBottom={3}>
         Genres
       </Heading>
-      <List>
+      <List paddingLeft={3}>
         {isLoading &&
           skeletons.map((skeleton) => (
             <ListItem key={skeleton} paddingY="8px">
