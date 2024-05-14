@@ -1,5 +1,5 @@
 import { Genre } from "../../services/genre-service";
-import { Box, Button, HStack, Image, Text } from "@chakra-ui/react";
+import { Button, Image, Text } from "@chakra-ui/react";
 import getCroppedImageUrl from "../../services/image-url";
 
 interface Props {
@@ -13,17 +13,7 @@ const GenreItem = ({ genre, onSelectGenre, highlight }: Props) => {
     <Button
       width="100%"
       fontWeight={highlight ? "bold" : "normal"}
-      fontSize="lg"
-      whiteSpace="wrap"
-      textAlign="left"
-      variant="ghost"
-      display="flex" // To make children align horizontally.
-      alignItems="center" // Align children vertically to center.
-      onClick={onSelectGenre}
-    >
-    <Button
-      width="100%"
-      fontWeight={highlight ? "bold" : "normal"}
+      bgColor={highlight ? "#252525" : ""}
       fontSize="lg"
       whiteSpace="wrap"
       textAlign="left"
@@ -36,7 +26,6 @@ const GenreItem = ({ genre, onSelectGenre, highlight }: Props) => {
         boxSize="32px"
         borderRadius={8}
         objectFit="cover"
-        marginRight={3}
         marginRight={3}
         src={getCroppedImageUrl(genre.image_background)}
       />
