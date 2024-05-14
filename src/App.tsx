@@ -59,7 +59,7 @@ function App() {
         <GridItem area="aside">
           <GenreList
             selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre: Genre) =>
+            onSelectGenre={(genre: Genre | null) =>
               setGameQuery({ ...gameQuery, genre: genre })
             }
           />

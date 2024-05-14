@@ -3,7 +3,7 @@ import { Button, Image, Text } from "@chakra-ui/react";
 import getCroppedImageUrl from "../../services/image-url";
 
 interface Props {
-  genre: Genre;
+  genre: Genre | null;
   onSelectGenre: () => void;
   highlight: boolean;
 }
@@ -22,15 +22,17 @@ const GenreItem = ({ genre, onSelectGenre, highlight }: Props) => {
       alignItems="center" // Align children vertically to center.
       onClick={onSelectGenre}
     >
-      <Image
-        boxSize="32px"
-        borderRadius={8}
-        objectFit="cover"
-        marginRight={3}
-        src={getCroppedImageUrl(genre.image_background)}
-      />
+      {genre && (
+        <Image
+          boxSize="32px"
+          borderRadius={8}
+          objectFit="cover"
+          marginRight={3}
+          src={getCroppedImageUrl(genre.image_background)}
+        />
+      )}
       {/* // Added a wrapper <Box> to control text alignment */}
-      <Text flex="1"> {genre.name}</Text>
+      <Text flex="1"> {genre === null ? "All Genres" : genre.name}</Text>
     </Button>
   );
 };

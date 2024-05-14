@@ -7,7 +7,7 @@ import { globalPadding } from "../../App";
 
 interface Props {
   selectedGenre: Genre | null;
-  onSelectGenre: (genre: Genre) => void;
+  onSelectGenre: (genre: Genre | null) => void;
 }
 
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
@@ -29,12 +29,12 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
             </ListItem>
           ))}
 
-        {genres.map((genre) => (
-          <ListItem key={genre.id} paddingY="5px">
+        {[null, ...genres].map((genre) => (
+          <ListItem key={genre?.id} paddingY="5px">
             <GenreItem
               genre={genre}
               onSelectGenre={() => onSelectGenre(genre)}
-              highlight={genre.id === selectedGenre?.id}
+              highlight={genre?.id === selectedGenre?.id}
             />
           </ListItem>
         ))}
