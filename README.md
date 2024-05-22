@@ -1,19 +1,18 @@
 # Game Hub
 
 A video games hub.
-This is a project for practicing Front-End development using React and RAWG API.
+This is a project for practicing Front-End development using React.ts and RAWG API.
 
 - Date: 05/2024
-- URL: [https://samehsaady.github.io/game-hub](https://samehsaady.github.io/game-hub)
+- URL: [https://game-hub-nine-flax.vercel.app](https://game-hub-nine-flax.vercel.app)
 
 ## APIs:
 
 - [RAWG](https://rawg.io/)
 
-## Technologies:
+## Technologies & Libraries:
 
 - React
 - Vite
 - Chakra UI
 - Axios
-- React Icons
