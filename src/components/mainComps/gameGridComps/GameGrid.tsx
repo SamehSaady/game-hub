@@ -12,7 +12,7 @@ interface Props {
 
 const GameGrid = ({ gameQuery }: Props) => {
   const { games, error, isLoading } = useGames(gameQuery);
-  const skeletons = arrUtils.getRangeFromZero(8);
+  const skeletons = arrUtils.getRangeFromZero(12);
 
   if (error) return <Text>{error}</Text>;
 
@@ -28,11 +28,12 @@ const GameGrid = ({ gameQuery }: Props) => {
             <GameCardSkeleton />
           </GameCardContainer>
         ))}
-      {games.map((game) => (
-        <GameCardContainer key={game.id}>
-          <GameCard game={game} />
-        </GameCardContainer>
-      ))}
+      {isLoading ||
+        games.map((game) => (
+          <GameCardContainer key={game.id}>
+            <GameCard game={game} />
+          </GameCardContainer>
+        ))}
     </SimpleGrid>
   );
 };
