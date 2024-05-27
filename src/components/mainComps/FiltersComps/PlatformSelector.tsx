@@ -8,9 +8,9 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import usePlatforms from "../../hooks/usePlatforms";
-import { Platform } from "../../services/platform-service";
-import PlatformIcon from "./gameGridComps/PlatformIcon";
+import usePlatforms from "../../../hooks/usePlatforms";
+import { Platform } from "../../../services/platform-service";
+import PlatformIcon from "../gameGridComps/PlatformIcon";
 
 interface Props {
   selectedPlatform: Platform | null;

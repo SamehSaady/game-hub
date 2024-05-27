@@ -1,6 +1,6 @@
 import { Genre } from "../../services/genre-service";
-import { Button, Image, Text } from "@chakra-ui/react";
-import getCroppedImageUrl from "../../services/image-url";
+import { Button, Text } from "@chakra-ui/react";
+import GenreImage from "../GenreImage";
 
 interface Props {
   genre: Genre | null;
@@ -9,7 +9,12 @@ interface Props {
   colorMode: string;
 }
 
-const GenreItem = ({ genre, onSelectGenre, highlight, colorMode }: Props) => {
+const GenreListItem = ({
+  genre,
+  onSelectGenre,
+  highlight,
+  colorMode,
+}: Props) => {
   return (
     <Button
       width="100%"
@@ -24,19 +29,10 @@ const GenreItem = ({ genre, onSelectGenre, highlight, colorMode }: Props) => {
       alignItems="center" // Align children vertically to center.
       onClick={onSelectGenre}
     >
-      {genre && (
-        <Image
-          boxSize="40px"
-          borderRadius={8}
-          objectFit="cover"
-          marginRight={3}
-          src={getCroppedImageUrl(genre.image_background)}
-        />
-      )}
-      {/* // Added a wrapper <Box> to control text alignment */}
+      <GenreImage genre={genre} />
       <Text flex="1"> {genre === null ? "All Genres" : genre.name}</Text>
     </Button>
   );
 };
 
-export default GenreItem;
+export default GenreListItem;
