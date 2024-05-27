@@ -1,4 +1,4 @@
-import { Box, HStack, Heading, Image, Show } from "@chakra-ui/react";
+import { HStack, Heading, Image, Show } from "@chakra-ui/react";
 import logo from "../../assets/icons8-game-controller-windows-11-color-96.png";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";

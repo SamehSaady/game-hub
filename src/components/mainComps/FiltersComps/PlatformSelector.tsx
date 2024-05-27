@@ -11,6 +11,7 @@ import { BsChevronDown } from "react-icons/bs";
 import usePlatformsFetcher from "../../../hooks/usePlatformsFetcher";
 import { Platform } from "../../../services/platform-service";
 import PlatformIcon from "../gameGridComps/PlatformIcon";
+import { allPlatforms } from "../../../App";
 
 interface Props {
   selectedPlatform: Platform | null;
@@ -19,7 +20,6 @@ interface Props {
 
 const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
   const { platforms, error } = usePlatformsFetcher();
-  const allPlatforms = "All Platforms";
 
   if (error) return;
 
@@ -36,7 +36,7 @@ const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
       <MenuList>
         {[null, ...platforms].map((platform) => (
           <MenuItem
-            key={platform?.id}
+            key={platform?.id || allPlatforms}
             icon={<PlatformIcon platform={platform} />}
             onClick={() => onSelectedPlatform(platform)}
           >

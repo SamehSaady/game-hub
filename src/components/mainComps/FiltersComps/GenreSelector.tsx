@@ -10,6 +10,7 @@ import {
 import { Genre } from "../../../services/genre-service";
 import { BsChevronDown } from "react-icons/bs";
 import GenreImage from "../../GenreImage";
+import { allGenres } from "../../../App";
 
 interface Props {
   fetchedGenres: {
@@ -26,7 +27,6 @@ const GenreSelector = ({
   selectedGenre,
   onSelectGenre,
 }: Props) => {
-  const allGenres = "All Genres";
   if (fetchedGenres.error) return null;
 
   return (

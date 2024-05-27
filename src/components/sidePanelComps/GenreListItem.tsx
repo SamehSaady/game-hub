@@ -1,6 +1,7 @@
 import { Genre } from "../../services/genre-service";
 import { Button, Text } from "@chakra-ui/react";
 import GenreImage from "../GenreImage";
+import { allGenres } from "../../App";
 
 interface Props {
   genre: Genre | null;
@@ -30,7 +31,7 @@ const GenreListItem = ({
       onClick={onSelectGenre}
     >
       <GenreImage genre={genre} />
-      <Text flex="1"> {genre === null ? "All Genres" : genre.name}</Text>
+      <Text flex="1"> {genre === null ? allGenres : genre.name}</Text>
     </Button>
   );
 };

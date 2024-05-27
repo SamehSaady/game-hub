@@ -19,6 +19,8 @@ export interface GameQuery {
 }
 
 export const globalPadding = 6;
+export const allGenres = "All Genres";
+export const allPlatforms = "All Platforms";
 
 function App() {
   // For [base] [templateAreas]:
