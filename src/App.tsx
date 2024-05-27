@@ -53,7 +53,7 @@ function App() {
       }}
       templateColumns={{
         base: "1fr", // [1 fraction]: The column stetches and takes all the available space.
-        lg: "250px 1fr", // The first column will be [250px] and the second one will stetche and take all the available space.
+        lg: "250px 1fr", // The first column will be [250px] and the second one will stretched and take all the available space.
       }}
     >
       <GridItem area="nav">
@@ -79,7 +79,7 @@ function App() {
       </Show>
 
       <GridItem area="main">
-        <Box paddingLeft={globalPadding}>
+        <Box paddingX={globalPadding}>
           <GameHeading gameQuery={gameQuery} />
           <HStack spacing={globalPadding} paddingBottom={2}>
             <PlatformSelector
