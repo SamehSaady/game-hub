@@ -1,6 +1,6 @@
 import { Grid, GridItem, Show, useColorMode } from "@chakra-ui/react";
 import NavBar from "./components/navBarComps/NavBar";
-import GameGrid from "./components/mainComps/gameGridComps/GameGrid";
+import GamesGrid from "./components/mainComps/gameGridComps/GamesGrid";
 import GenreList from "./components/sidePanelComps/GenreList";
 import { useState } from "react";
 import { Genre } from "./services/genre-service";
@@ -9,6 +9,7 @@ import { sortOrders } from "./components/mainComps/FiltersComps/SortSelector";
 import { SortOrder } from "./components/mainComps/FiltersComps/SortSelector";
 import FiltersContainer from "./components/mainComps/FiltersComps/FiltersContainer";
 import useGenresFetcher from "./hooks/useGenresFetcher";
+import GamesPagination from "./components/mainComps/GamesPagination";
 
 // [null] for [genre] or [platform] shall retrieve all games (no specific genre or platform).
 export interface GameQuery {
@@ -82,7 +83,8 @@ function App() {
           setGameQuery={setGameQuery}
           fetchedGenres={fetchedGenres}
         />
-        <GameGrid gameQuery={gameQuery} />
+        <GamesGrid gameQuery={gameQuery} />
+        {/* <GamesPagination /> */}
       </GridItem>
     </Grid>
   );

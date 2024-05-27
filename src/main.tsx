@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+// import "bootstrap/dist/css/bootstrap.css";
+// When referencing Bootstrap, some text become not aligned vertically (e.g., "All Genres" & "All Platforms")
 import App from "./App.tsx";
 import "./App.css";
 import "./index.css";

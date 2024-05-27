@@ -10,7 +10,7 @@ interface Props {
   gameQuery: GameQuery;
 }
 
-const GameGrid = ({ gameQuery }: Props) => {
+const GamesGrid = ({ gameQuery }: Props) => {
   const { games, error, isLoading } = useGamesFetcher(gameQuery);
   const skeletons = arrUtils.getRangeFromZero(12);
 
@@ -38,4 +38,4 @@ const GameGrid = ({ gameQuery }: Props) => {
   );
 };
 
-export default GameGrid;
+export default GamesGrid;
