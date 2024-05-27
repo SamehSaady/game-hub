@@ -8,7 +8,7 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import usePlatforms from "../../../hooks/usePlatforms";
+import usePlatformsFetcher from "../../../hooks/usePlatformsFetcher";
 import { Platform } from "../../../services/platform-service";
 import PlatformIcon from "../gameGridComps/PlatformIcon";
 
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
-  const { platforms, error } = usePlatforms();
+  const { platforms, error } = usePlatformsFetcher();
   const allPlatforms = "All Platforms";
 
   if (error) return;

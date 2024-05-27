@@ -5,7 +5,7 @@ import { HttpService } from "../services/http-service";
 import { AxiosRequestConfig } from "axios";
 
 // <T> is the Entity to store its objects in the hook.
-const useData = <T>(
+const useDataFetcher = <T>(
   service: HttpService<T>,
   requestConfig?: AxiosRequestConfig,
   deps?: any[]
@@ -39,4 +39,4 @@ const useData = <T>(
   return { data, error, isLoading };
 };
 
-export default useData;
+export default useDataFetcher;

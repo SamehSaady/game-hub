@@ -8,7 +8,7 @@ import { Platform } from "./services/platform-service";
 import { sortOrders } from "./components/mainComps/FiltersComps/SortSelector";
 import { SortOrder } from "./components/mainComps/FiltersComps/SortSelector";
 import FiltersContainer from "./components/mainComps/FiltersComps/FiltersContainer";
-import useGenres from "./hooks/useGenres";
+import useGenresFetcher from "./hooks/useGenresFetcher";
 
 // [null] for [genre] or [platform] shall retrieve all games (no specific genre or platform).
 export interface GameQuery {
@@ -38,7 +38,7 @@ function App() {
     searchText: "",
   });
 
-  const fetchedGenres = useGenres();
+  const fetchedGenres = useGenresFetcher();
 
   return (
     <Grid
