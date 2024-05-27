@@ -15,4 +15,5 @@ This is a project for practicing Front-End development using React.ts and RAWG A
 - React
 - Vite
 - Chakra UI
+- Bootstrap
 - Axios
