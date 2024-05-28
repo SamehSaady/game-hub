@@ -1,5 +1,4 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import useGamesFetcher from "../../../hooks/useGamesFetcher";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
@@ -17,7 +16,7 @@ interface Props {
   };
 }
 
-const GamesGrid = ({ gameQuery, fetchedGames }: Props) => {
+const GamesGrid = ({ fetchedGames }: Props) => {
   const skeletons = arrUtils.getRangeFromZero(12);
 
   if (fetchedGames.error) return <Text>{fetchedGames.error}</Text>;
