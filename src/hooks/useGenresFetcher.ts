@@ -4,7 +4,7 @@ import useDataFetcher from "./useDataFetcher";
 const useGenresFetcher = () => {
   const { data, error, isLoading } = useDataFetcher<Genre>(genreService);
 
-  return { genres: data, error, isLoading };
+  return { genres: data.results, error, isLoading };
 };
 
 export default useGenresFetcher;

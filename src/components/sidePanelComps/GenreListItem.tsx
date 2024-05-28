@@ -2,6 +2,10 @@ import { Genre } from "../../services/genre-service";
 import { Button, Text } from "@chakra-ui/react";
 import GenreImage from "../GenreImage";
 import { allGenres } from "../../App";
+import {
+  getHighlightBGColor,
+  getHighlightFontWeight,
+} from "../../services/highlight-button-service";
 
 interface Props {
   genre: Genre | null;
@@ -20,8 +24,9 @@ const GenreListItem = ({
     <Button
       width="100%"
       height="50px"
-      fontWeight={highlight ? "bold" : "normal"}
-      bgColor={highlight ? (colorMode === "dark" ? "#252525" : "#ededed") : ""}
+      fontWeight={getHighlightFontWeight(highlight)}
+      bgColor={getHighlightBGColor(highlight, colorMode)}
+      // colorScheme={highlight ? "blue" : ""}
       fontSize="lg"
       whiteSpace="wrap"
       textAlign="left"

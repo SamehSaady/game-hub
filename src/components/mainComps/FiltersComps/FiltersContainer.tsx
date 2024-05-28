@@ -29,7 +29,11 @@ const FiltersContainer = ({
         <PlatformSelector
           selectedPlatform={gameQuery.platform}
           onSelectedPlatform={(selectedPlatform: Platform | null) =>
-            setGameQuery({ ...gameQuery, platform: selectedPlatform })
+            setGameQuery({
+              ...gameQuery,
+              platform: selectedPlatform,
+              pageNum: 1,
+            })
           }
         />
         <Show below="lg">
@@ -37,14 +41,18 @@ const FiltersContainer = ({
             fetchedGenres={fetchedGenres}
             selectedGenre={gameQuery.genre}
             onSelectGenre={(genre: Genre | null) =>
-              setGameQuery({ ...gameQuery, genre: genre })
+              setGameQuery({ ...gameQuery, genre: genre, pageNum: 1 })
             }
           />
         </Show>
         <SortSelector
           selectedSortOrder={gameQuery.sortOrder}
           onSelectedSortOrder={(selectedSortOrder: SortOrder) =>
-            setGameQuery({ ...gameQuery, sortOrder: selectedSortOrder })
+            setGameQuery({
+              ...gameQuery,
+              sortOrder: selectedSortOrder,
+              pageNum: 1,
+            })
           }
         />
       </HStack>

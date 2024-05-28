@@ -12,12 +12,14 @@ const useGamesFetcher = (gameQuery: GameQuery) => {
         parent_platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder.apiValue,
         search: gameQuery.searchText,
+        page: gameQuery.pageNum,
+        page_size: 20,
       },
     },
     [gameQuery]
   );
 
-  return { games: data, error, isLoading };
+  return { games: data.results, count: data.count, error, isLoading };
 };
 
 export default useGamesFetcher;

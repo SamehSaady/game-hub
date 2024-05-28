@@ -3,9 +3,11 @@ import { AxiosRequestConfig } from "axios";
 import apiClient from "./api-client";
 
 export interface FetchResponse<T> {
-  count: number;
-  results: T[];
+  count: number; // The number of retrieved objects from API response.
+  results: T[]; // The retrieved objects from API response.
 }
+// In some cases (like retrieving Games) the [count] doesn't equal to the [results]
+// as the [results] contains the objects per page while the [count] contains all the requested objects.
 
 // <T> is the Entity to fetch its objects.
 export class HttpService<T> {

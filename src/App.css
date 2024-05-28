@@ -1,9 +1,5 @@
-@font-face {
-  font-family: "Poetsen One";
-  src: url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
-}
-
-#websiteHeading {
-  font-family: Poetsen One;
-  font-style: italic;
+.russo-one-regular-font {
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

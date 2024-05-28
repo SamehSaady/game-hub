@@ -15,7 +15,12 @@ const NavBar = ({ colorMode, toggleColorMode, onSearch }: Props) => {
     <HStack paddingY="10px" paddingX={globalPadding} spacing="20px">
       <Image src={logo} alt="Game Hub" boxSize="60px" />
       <Show above="sm">
-        <Heading id="websiteHeading" as="h1" fontSize="4xl" paddingBottom={1}>
+        <Heading
+          className="russo-one-regular-font" // Google fonts aren't working with Chakra UI.
+          as="h1"
+          fontSize="3xl"
+          paddingBottom={1}
+        >
           GameHub
         </Heading>
       </Show>

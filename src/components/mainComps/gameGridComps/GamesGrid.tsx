@@ -5,16 +5,22 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import arrUtils from "../../../utils/arrUtils";
 import { GameQuery, globalPadding } from "../../../App";
+import { Game } from "../../../services/game-service";
 
 interface Props {
   gameQuery: GameQuery;
+  fetchedGames: {
+    games: Game[];
+    count: number;
+    error: string;
+    isLoading: boolean;
+  };
 }
 
-const GamesGrid = ({ gameQuery }: Props) => {
-  const { games, error, isLoading } = useGamesFetcher(gameQuery);
+const GamesGrid = ({ gameQuery, fetchedGames }: Props) => {
   const skeletons = arrUtils.getRangeFromZero(12);
 
-  if (error) return <Text>{error}</Text>;
+  if (fetchedGames.error) return <Text>{fetchedGames.error}</Text>;
 
   return (
     <SimpleGrid
@@ -22,14 +28,14 @@ const GamesGrid = ({ gameQuery }: Props) => {
       spacing={globalPadding}
       padding={globalPadding}
     >
-      {isLoading &&
+      {fetchedGames.isLoading &&
         skeletons.map((skeleton) => (
           <GameCardContainer key={skeleton}>
             <GameCardSkeleton />
           </GameCardContainer>
         ))}
-      {isLoading ||
-        games.map((game) => (
+      {fetchedGames.isLoading ||
+        fetchedGames.games.map((game) => (
           <GameCardContainer key={game.id}>
             <GameCard game={game} />
           </GameCardContainer>

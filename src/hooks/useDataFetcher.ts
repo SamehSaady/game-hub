@@ -1,7 +1,7 @@
 // A generic data fetching hook.
 import { useEffect, useState } from "react";
 import { CanceledError } from "../services/api-client";
-import { HttpService } from "../services/http-service";
+import { FetchResponse, HttpService } from "../services/http-service";
 import { AxiosRequestConfig } from "axios";
 
 // <T> is the Entity to store its objects in the hook.
@@ -10,7 +10,7 @@ const useDataFetcher = <T>(
   requestConfig?: AxiosRequestConfig,
   deps?: any[]
 ) => {
-  const [data, setData] = useState<T[]>([]);
+  const [data, setData] = useState<FetchResponse<T>>({ count: 0, results: [] });
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -22,7 +22,7 @@ const useDataFetcher = <T>(
 
       request
         .then((res) => {
-          setData(res.data.results);
+          setData({ count: res.data.count, results: res.data.results });
           setLoading(false);
         })
         .catch((err) => {
