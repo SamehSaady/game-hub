@@ -1,8 +1,6 @@
-# Game Hub
+# GameHub
 
-A video games hub.
-
-This is a project for practicing Front-End development using React.ts and RAWG API.
+A video games hub created for practicing Front-End development using React.ts and RAWG API.
 
 - GameHub URL: [https://game-hub-nine-flax.vercel.app](https://game-hub-nine-flax.vercel.app)
 - Date: 05/2024
